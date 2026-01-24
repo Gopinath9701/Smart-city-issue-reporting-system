@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Department Dashboard</title>
+    <style>
+        body { font-family: Arial; margin: 0; }
+        .main-content { padding: 20px; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { border: 1px solid #ddd; padding: 10px; }
+        .btn-view { background: #3498db; color: white; border: none; padding: 5px 10px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <div class="main-content">
+        <h2>Assigned Complaints</h2>
+        <table>
+            <tr>
+                <th>Category</th>
+                <th>Description</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+            <tr id="deptRow">
+                </tr>
+        </table>
+    </div>
+
+    <script>
+        const cat = localStorage.getItem('recentCategory');
+        const desc = localStorage.getItem('recentDesc');
+        const stat = localStorage.getItem('recentStatus');
+
+        if(cat) {
+            document.getElementById('deptRow').innerHTML = `
+                <td>${cat}</td>
+                <td>${desc}</td>
+                <td><b>${stat}</b></td>
+                <td><a href="update_status.html"><button class="btn-view">Update</button></a></td>
+            `;
+        }
+    </script>
+</body>
+</html>

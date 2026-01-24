@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard</title>
+    <style>
+        .stats-container { display: flex; gap: 20px; margin-bottom: 30px; }
+        .stat-box { flex: 1; padding: 20px; color: white; text-align: center; border-radius: 8px; }
+        .blue { background: #2980b9; }
+        .green { background: #27ae60; }
+        .orange { background: #e67e22; }
+        .table-container { background: #f9f9f9; padding: 20px; border: 1px solid #ddd; }
+    </style>
+</head>
+<body>
+    <div style="padding: 20px;">
+        <h1>System Overview (Admin)</h1>
+        
+        <div class="stats-container">
+            <div class="stat-box blue"><h3>Total Complaints</h3><p>150</p></div>
+            <div class="stat-box orange"><h3>Pending</h3><p>45</p></div>
+            <div class="stat-box green"><h3>Resolved</h3><p>105</p></div>
+        </div>
+
+        <div class="table-container">
+            <h3>Recent Activity Across All Departments</h3>
+            <table border="1" width="100%" cellpadding="10" style="border-collapse: collapse;">
+                <tr>
+                    <th>Dept Name</th>
+                    <th>Total Received</th>
+                    <th>Resolved</th>
+                    <th>Efficiency %</th>
+                </tr>
+                <tr>
+                    <td>Water Dept</td>
+                    <td>40</td>
+                    <td>35</td>
+                    <td>87%</td>
+                </tr>
+                <tr>
+                    <td>Electricity</td>
+                    <td>60</td>
+                    <td>50</td>
+                    <td>83%</td>
+                </tr>
+            </table>
+        </div>
+        
+        <br>
+        <a href="manage_users.html">Manage Users & Departments</a> | <a href="reports.html">View Analytics</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My History</title>
+    <style>
+        table { width: 90%; margin: 20px auto; border-collapse: collapse; font-family: Arial; }
+        th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        .status-tag { font-weight: bold; color: red; }
+    </style>
+</head>
+<body>
+    <h2 style="text-align: center;">My Filed Complaints</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Category</th>
+                <th>Location</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody id="complaintTableBody">
+            </tbody>
+    </table>
+
+    <script>
+        // Check if there is a saved complaint
+        const cat = localStorage.getItem('recentCategory');
+        const loc = localStorage.getItem('recentLoc');
+        const stat = localStorage.getItem('recentStatus');
+
+        if(cat) {
+            const tableBody = document.getElementById('complaintTableBody');
+            tableBody.innerHTML = `
+                <tr>
+                    <td>${cat}</td>
+                    <td>${loc}</td>
+                    <td class="status-tag">${stat}</td>
+                </tr>
+            `;
+        } else {
+            document.body.innerHTML += "<p style='text-align:center'>No complaints found.</p>";
+        }
+    </script>
+</body>
+</html>
