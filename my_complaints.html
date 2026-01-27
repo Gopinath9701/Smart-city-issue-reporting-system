@@ -1,46 +1,60 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>My History</title>
-    <style>
-        table { width: 90%; margin: 20px auto; border-collapse: collapse; font-family: Arial; }
-        th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
-        th { background-color: #f2f2f2; }
-        .status-tag { font-weight: bold; color: red; }
-    </style>
+    <title>My Complaints History</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="bootstrap.min.css" rel="stylesheet">
 </head>
-<body>
-    <h2 style="text-align: center;">My Filed Complaints</h2>
-    <table>
-        <thead>
-            <tr>
-                <th>Category</th>
-                <th>Location</th>
-                <th>Status</th>
-            </tr>
-        </thead>
-        <tbody id="complaintTableBody">
-            </tbody>
-    </table>
-
-    <script>
-        // Check if there is a saved complaint
-        const cat = localStorage.getItem('recentCategory');
-        const loc = localStorage.getItem('recentLoc');
-        const stat = localStorage.getItem('recentStatus');
-
-        if(cat) {
-            const tableBody = document.getElementById('complaintTableBody');
-            tableBody.innerHTML = `
-                <tr>
-                    <td>${cat}</td>
-                    <td>${loc}</td>
-                    <td class="status-tag">${stat}</td>
-                </tr>
+<body class="bg-light">
+<div class="container py-4">
+    <h2 class="text-center mb-4">My Filed Complaints</h2>
+    <div class="card">
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table table-bordered mb-0">
+                    <thead class="table-light">
+                    <tr>
+                        <th>#</th>
+                        <th>Category</th>
+                        <th>Location</th>
+                        <th>PIN / Area</th>
+                        <th>Status</th>
+                        <th>Created At</th>
+                    </tr>
+                    </thead>
+                    <tbody id="complaintTableBody"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <p id="noComplaintsMsg" class="text-center text-muted mt-3 d-none">
+        No complaints found.
+    </p>
+</div>
+<script src="bootstrap.bundle.min.js"></script>
+<script>
+    const complaints = JSON.parse(localStorage.getItem('complaints')) || [];
+    const tbody = document.getElementById('complaintTableBody');
+    const noMsg = document.getElementById('noComplaintsMsg');
+    const currentUserEmail = localStorage.getItem('currentUserEmail') || 'demo@user.com';
+    const myComplaints = complaints.filter(c => c.citizenEmail === currentUserEmail);
+    if (myComplaints.length === 0) {
+        noMsg.classList.remove('d-none');
+    } else {
+        myComplaints.forEach((c, index) => {
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+                <td>${index + 1}</td>
+                <td>${c.category}</td>
+                <td>${c.location}</td>
+                <td>${c.pincode || ''} ${c.area ? ('<br><small>' + c.area + '</small>') : ''}</td>
+                <td><span class="badge ${c.status === 'Resolved' ? 'bg-success' : 'bg-warning text-dark'}">${c.status}</span></td>
+                <td><small>${c.createdAt || ''}</small></td>
             `;
-        } else {
-            document.body.innerHTML += "<p style='text-align:center'>No complaints found.</p>";
-        }
-    </script>
+            tbody.appendChild(tr);
+        });
+    }
+</script>
 </body>
 </html>

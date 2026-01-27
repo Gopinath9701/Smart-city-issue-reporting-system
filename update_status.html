@@ -1,30 +1,43 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <title>Update Complaint</title>
-    <style>
-        .box { width: 500px; margin: 50px auto; border: 1px solid #ccc; padding: 20px; }
-    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="bootstrap.min.css" rel="stylesheet">
 </head>
-<body>
-    <div class="box">
-        <h3>Update Complaint Status (#105)</h3>
-        <p><strong>Issue:</strong> Big pothole near Main Square.</p>
-        <hr>
-        <form>
-            <label>Change Status:</label><br>
-            <select style="width:100%; padding:10px; margin:10px 0;">
-                <option>Open</option>
-                <option>In Progress</option>
-                <option>Resolved</option>
-                <option>Rejected</option>
-            </select><br>
-            
-            <label>Officer Remarks:</label><br>
-            <textarea style="width:100%; height:80px; margin:10px 0;"></textarea><br>
-            
-            <button type="submit" style="background:green; color:white; padding:10px; border:none; width:100%;">Save Changes</button>
-        </form>
+<body class="bg-light">
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <h3 class="mb-3">Update Complaint Status (#105)</h3>
+                        <p><strong>Issue:</strong> Big pothole near Main Square.</p>
+                        <hr>
+                        <form>
+                            <div class="mb-3">
+                                <label class="form-label">Change Status</label>
+                                <select class="form-select">
+                                    <option>Open</option>
+                                    <option>In Progress</option>
+                                    <option>Resolved</option>
+                                    <option>Rejected</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Officer Remarks</label>
+                                <textarea class="form-control" rows="3" placeholder="Enter remarks"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-success w-100">
+                                Save Changes
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+    <script src="bootstrap.bundle.min.js"></script>
 </body>
 </html>

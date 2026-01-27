@@ -1,43 +1,74 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <title>Department Dashboard</title>
-    <style>
-        body { font-family: Arial; margin: 0; }
-        .main-content { padding: 20px; }
-        table { width: 100%; border-collapse: collapse; }
-        th, td { border: 1px solid #ddd; padding: 10px; }
-        .btn-view { background: #3498db; color: white; border: none; padding: 5px 10px; cursor: pointer; }
-    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    <div class="main-content">
-        <h2>Assigned Complaints</h2>
-        <table>
-            <tr>
-                <th>Category</th>
-                <th>Description</th>
-                <th>Status</th>
-                <th>Action</th>
-            </tr>
-            <tr id="deptRow">
-                </tr>
-        </table>
+    <div class="container-fluid py-4">
+        <h2 class="mb-4">Assigned Complaints</h2>
+        <div class="card">
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-bordered mb-0">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>Category</th>
+                                <th>Description</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr id="deptRow"></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
     </div>
+    <script src="bootstrap.bundle.min.js"></script>
 
     <script>
         const cat = localStorage.getItem('recentCategory');
         const desc = localStorage.getItem('recentDesc');
         const stat = localStorage.getItem('recentStatus');
 
-        if(cat) {
+        if (cat) {
             document.getElementById('deptRow').innerHTML = `
                 <td>${cat}</td>
                 <td>${desc}</td>
                 <td><b>${stat}</b></td>
-                <td><a href="update_status.html"><button class="btn-view">Update</button></a></td>
+                <td>
+                    <a href="update_status.html" class="btn btn-sm btn-primary">
+                        Update
+                    </a>
+                </td>
             `;
         }
     </script>
+    <script>
+    const complaints = JSON.parse(localStorage.getItem('complaints')) || [];
+    const deptLocality = localStorage.getItem('currentUserLocality') || '';
+    const tbody = document.getElementById('deptTableBody'); // set this id on your <tbody>
+    const assigned = complaints.filter(c => c.locality === deptLocality);
+    if (assigned.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="5" class="text-center text-muted">No complaints for your locality.</td></tr>';
+    } else {
+        assigned.forEach((c, index) => {
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+                <td>${index + 1}</td>
+                <td>${c.category}</td>
+                <td>${c.location}</td>
+                <td>${c.status}</td>
+                <td>${c.createdAt || ''}</td>
+            `;
+            tbody.appendChild(tr);
+        });
+    }
+</script>
 </body>
 </html>
