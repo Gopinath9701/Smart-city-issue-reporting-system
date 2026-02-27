@@ -5,37 +5,110 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        /* Perfect center */
+        body {
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        /* Remove extra container height conflict */
+        .container {
+            min-height: auto !important;
+        }
+
+        /* Card design with more space */
+        .card {
+            border-radius: 30px !important;
+            padding: 20px;
+            width: 420px;              /* slightly wider */
+            background: #ffffff;
+            transition: 0.3s ease;
+        }
+
+        .card-body {
+            padding: 35px !important;  /* more inside spacing */
+        }
+
+        h2 {
+            font-weight: 600;
+            margin-bottom: 25px;
+            color: #1e3c72;
+        }
+
+        /* Inputs spacing */
+        .form-control,
+        .form-select {
+            border-radius: 12px;
+            padding: 12px;
+            margin-bottom: 15px;
+        }
+
+        .form-control:focus,
+        .form-select:focus {
+            border-color: #2a5298;
+            box-shadow: 0 0 8px rgba(42, 82, 152, 0.4);
+        }
+
+        /* Button */
+        .btn-info {
+            border-radius: 12px;
+            padding: 12px;
+            font-weight: 600;
+        }
+
+        .btn-info:hover {
+            background-color: #1e3c72;
+        }
+
+        .link-primary {
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .link-primary:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
+
 <body class="bg-light">
-    <div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+    <div class="container d-flex justify-content-center align-items-center">
         <div class="card shadow-lg border-0" style="max-width: 380px; border-radius: 30px;">
             <div class="card-body p-4">
                 <h2 class="text-center mb-4">Login to Portal</h2>
                 <form action="dashboard_redirect.html">
-    <div class="mb-3">
-        <select class="form-select" required>
-            <option value="">Select Your Role</option>
-            <option value="citizen">Citizen</option>
-            <option value="dept">Department Officer</option>
-            <option value="admin">Administrator</option>
-        </select>
-    </div>
-    <div class="mb-3">
-        <input type="email" class="form-control" placeholder="Email ID" required>
-    </div>
-    <div class="mb-3">
-        <input type="password" class="form-control" placeholder="Password" required>
-    </div>
-    <div class="mb-3 text-start">
-        <a href="forgot_password.html" class="link-primary">Forgot password?</a>
-    </div>
-    <button type="submit" class="btn btn-info w-100 text-white">
-        Login
-    </button>
-</form>
+                    <div class="mb-3">
+                        <select class="form-select" required>
+                            <option value="">Select Your Role</option>
+                            <option value="citizen">Citizen</option>
+                            <option value="dept">Department Officer</option>
+                            <option value="admin">Administrator</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <input type="email" class="form-control" placeholder="Email ID" required>
+                    </div>
+                    <div class="mb-3">
+                        <input type="password" class="form-control" placeholder="Password" required>
+                    </div>
+                    <div class="mb-3 text-start">
+                        <a href="forgot_password.html" class="link-primary">Forgot password?</a>
+                    </div>
+                    <button type="submit" class="btn btn-info w-100 text-white">
+                        Login
+                    </button>
+                </form>
             </div>
         </div>
     </div>
+
     <script src="bootstrap.bundle.min.js"></script>
     <script>
 document.querySelector('form').onsubmit = function(e) {
