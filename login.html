@@ -5,9 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="bootstrap.min.css" rel="stylesheet">
-
     <style>
-        /* Perfect center */
         body {
             height: 100vh;
             margin: 0;
@@ -17,67 +15,52 @@
             background: linear-gradient(135deg, #1e3c72, #2a5298);
             font-family: 'Segoe UI', sans-serif;
         }
-
-        /* Remove extra container height conflict */
         .container {
             min-height: auto !important;
         }
-
-        /* Card design with more space */
         .card {
             border-radius: 30px !important;
             padding: 20px;
-            width: 420px;              /* slightly wider */
+            width: 420px;             
             background: #ffffff;
             transition: 0.3s ease;
         }
-
         .card-body {
-            padding: 35px !important;  /* more inside spacing */
+            padding: 35px !important;  
         }
-
         h2 {
             font-weight: 600;
             margin-bottom: 25px;
             color: #1e3c72;
         }
-
-        /* Inputs spacing */
         .form-control,
         .form-select {
             border-radius: 12px;
             padding: 12px;
             margin-bottom: 15px;
         }
-
         .form-control:focus,
         .form-select:focus {
             border-color: #2a5298;
             box-shadow: 0 0 8px rgba(42, 82, 152, 0.4);
         }
-
-        /* Button */
         .btn-info {
             border-radius: 12px;
             padding: 12px;
             font-weight: 600;
         }
-
         .btn-info:hover {
             background-color: #1e3c72;
         }
-
         .link-primary {
             text-decoration: none;
             font-size: 14px;
         }
-
         .link-primary:hover {
             text-decoration: underline;
         }
     </style>
 </head>
-
 <body class="bg-light">
     <div class="container d-flex justify-content-center align-items-center">
         <div class="card shadow-lg border-0" style="max-width: 380px; border-radius: 30px;">
@@ -108,7 +91,6 @@
             </div>
         </div>
     </div>
-
     <script src="bootstrap.bundle.min.js"></script>
     <script>
 document.querySelector('form').onsubmit = function(e) {
